@@ -4,5 +4,5 @@ openai
 tiktoken
 docarray
 chromadb
-selenium
+playwright
 unstructured
