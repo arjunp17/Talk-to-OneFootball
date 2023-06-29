@@ -16,9 +16,8 @@ url_list = ["https://onefootball.com/en/home",
        "https://onefootball.com/en/team/barcelona-5",]
 
 
-def generate_response(url_list, openai_api_key, query_text):
-    if url_list is not None:
-        # Set OpenAI API key
+def generate_response(openai_api_key, query_text):
+	# Set OpenAI API key
         os.environ['OPENAI_API_KEY'] = openai_api_key
         openai.api_key  = os.getenv('OPENAI_API_KEY')
         # Select LLM Model
@@ -49,7 +48,7 @@ with st.form('myform', clear_on_submit=True):
     submitted = st.form_submit_button('Submit', disabled=not query_text)
     if submitted and openai_api_key.startswith('sk-'):
         with st.spinner('Calculating...'):
-            response = generate_response(url_list, openai_api_key, query_text)
+            response = generate_response(openai_api_key, query_text)
             result.append(response)
             del openai_api_key
 
