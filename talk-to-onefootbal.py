@@ -9,7 +9,7 @@ from langchain.chains import RetrievalQA
 from langchain.chat_models import ChatOpenAI
 from langchain.document_loaders import UnstructuredURLLoader
 from langchain.vectorstores import DocArrayInMemorySearch
-
+from langchain.indexes import VectorstoreIndexCreator
 
 
 url_list = ["https://onefootball.com/en/home",
@@ -25,20 +25,11 @@ def generate_response(url_list, openai_api_key, query_text):
         llm = ChatOpenAI(temperature = 0.0)
         # Load url_list
         loader = UnstructuredURLLoader(urls=url_list)
-        docs = loader.load()
-        # Select embeddings
-        embeddings = OpenAIEmbeddings()
-        # Create a vectorstore from documents
-        db = DocArrayInMemorySearch.from_documents(docs, embeddings)
-        #db = Chroma.from_documents(docs, embeddings)
-        # Create retriever interface
-        retriever = db.as_retriever()
-        # Create QA chain
-        qa_stuff = RetrievalQA.from_chain_type(llm=llm, 
-                                                chain_type="stuff", 
-                                                retriever=retriever, 
-                                                verbose=False)
-        return qa_stuff.run(query_text)
+        # Create Vector Database
+        index = VectorstoreIndexCreator(vectorstore_cls=DocArrayInMemorySearch).from_loaders([loader])
+        # Generate response based on the input query
+        response = index.query(query_text, llm=llm)
+        return response
 
 
 
