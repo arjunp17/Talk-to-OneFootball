@@ -16,7 +16,7 @@ url_list = ["https://onefootball.com/en/home",
 
 
 def generate_response(url_list, openai_api_key, query_text):
-    if file_url is not None:
+    if url_list is not None:
         # Set OpenAI API key
         os.environ['OPENAI_API_KEY'] = openai_api_key
         openai.api_key  = os.getenv('OPENAI_API_KEY')
@@ -47,7 +47,7 @@ st.set_page_config(page_title='🏈🔗 Talk to OneFootball')
 st.title('🏈🔗 Talk to OneFootball')
 
 # Query text
-query_text = st.text_input('Enter your question:', placeholder = 'Please provide a short summary.')
+query_text = st.text_input('Enter your query:', placeholder = 'Please provide a short summary.')
 
 # Form input and query
 result = []
