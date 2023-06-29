@@ -6,3 +6,4 @@ docarray
 chromadb
 playwright
 unstructured
+playwright install
