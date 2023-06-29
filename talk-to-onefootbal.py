@@ -12,7 +12,7 @@ from langchain.document_loaders import UnstructuredURLLoader
 
 
 url_list = ["https://onefootball.com/en/home",
-       "https://onefootball.com/en/team/barcelona-5"]
+       "https://onefootball.com/en/team/barcelona-5",]
 
 
 def generate_response(url_list, openai_api_key, query_text):
