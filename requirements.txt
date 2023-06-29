@@ -4,4 +4,5 @@ openai
 tiktoken
 docarray
 chromadb
+libmagic
 unstructured
