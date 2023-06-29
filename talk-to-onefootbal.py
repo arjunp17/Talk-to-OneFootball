@@ -10,6 +10,8 @@ from langchain.chat_models import ChatOpenAI
 from langchain.document_loaders import UnstructuredURLLoader
 from langchain.vectorstores import DocArrayInMemorySearch
 from langchain.indexes import VectorstoreIndexCreator
+from langchain.document_loaders import WebBaseLoader
+
 
 
 #url_list = ["https://onefootball.com/en/home", "https://onefootball.com/en/team/barcelona-5"]
@@ -22,7 +24,8 @@ def generate_response(openai_api_key, query_text):
         # Select LLM Model
         llm = ChatOpenAI(temperature = 0.0)
         # Load url_list
-        loader = UnstructuredURLLoader(urls=["https://onefootball.com/en/home", "https://onefootball.com/en/team/barcelona-5"])
+	loader = WebBaseLoader(["https://onefootball.com/en/home", "https://onefootball.com/en/team/barcelona-5"])
+        #loader = UnstructuredURLLoader(urls=["https://onefootball.com/en/home", "https://onefootball.com/en/team/barcelona-5"])
         # Create Vector Database
         index = VectorstoreIndexCreator(vectorstore_cls=DocArrayInMemorySearch).from_loaders([loader])
         # Generate response based on the input query
