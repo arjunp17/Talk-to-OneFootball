@@ -5,4 +5,3 @@ tiktoken
 docarray
 chromadb
 unstructured
-python-libmagic
