@@ -8,6 +8,7 @@ from langchain.vectorstores import Chroma
 from langchain.chains import RetrievalQA
 from langchain.chat_models import ChatOpenAI
 from langchain.document_loaders import UnstructuredURLLoader
+from langchain.vectorstores import DocArrayInMemorySearch
 
 
 
@@ -28,7 +29,8 @@ def generate_response(url_list, openai_api_key, query_text):
         # Select embeddings
         embeddings = OpenAIEmbeddings()
         # Create a vectorstore from documents
-        db = Chroma.from_documents(docs, embeddings)
+        db = DocArrayInMemorySearch.from_documents(docs, embeddings)
+        #db = Chroma.from_documents(docs, embeddings)
         # Create retriever interface
         retriever = db.as_retriever()
         # Create QA chain
