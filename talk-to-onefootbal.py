@@ -10,7 +10,7 @@ from langchain.chat_models import ChatOpenAI
 from langchain.document_loaders import UnstructuredURLLoader
 from langchain.vectorstores import DocArrayInMemorySearch
 from langchain.indexes import VectorstoreIndexCreator
-from langchain.document_loaders import SeleniumURLLoader
+from langchain.document_loaders import PlaywrightURLLoader
 
 
 url_list = ["https://onefootball.com/en/home",
@@ -24,7 +24,7 @@ def generate_response(openai_api_key, query_text):
         # Select LLM Model
         llm = ChatOpenAI(temperature = 0.0)
         # Load url_list
-        loader = SeleniumURLLoader(urls=url_list)
+        loader = PlaywrightURLLoader(urls=url_list, remove_selectors=["header", "footer"])
         # Create Vector Database
         index = VectorstoreIndexCreator(vectorstore_cls=DocArrayInMemorySearch).from_loaders([loader])
         # Generate response based on the input query
