@@ -1,13 +1,9 @@
 # Talk-to-OneFootball
-A LangChain and Streamlit powered LLM application to talk to OneFootball!
+A LangChain-powered LLM application to talk to OneFootball!
 
 ## Deploy on Streamlit
 This is easily deployable on the Streamlit platform. When using the app you should make sure to add your **OPENAI_API_KEY** as an environment variable.
 
-https://github.com/arjunp17/Talk_to_your_YouTube_video_transcript/assets/31438104/d0a34925-5a2d-44aa-97e5-387509259866
-
-
-- [Try it!](https://talktoyouryoutubevideotranscript-78w6ne2r97b.streamlit.app/)
 
 ## References
 - [LangChain Streamlit tutorial](https://blog.streamlit.io/langchain-tutorial-4-build-an-ask-the-doc-app/)
