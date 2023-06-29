@@ -27,8 +27,7 @@ def generate_response(openai_api_key, query_text):
         # Create Vector Database
         index = VectorstoreIndexCreator(vectorstore_cls=DocArrayInMemorySearch).from_loaders([loader])
         # Generate response based on the input query
-        response = index.query(query_text, llm=llm)
-        return response
+        return index.query(query_text, llm=llm)
 
 
 
