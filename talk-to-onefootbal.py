@@ -22,7 +22,7 @@ def generate_response(url, openai_api_key, query_text):
         # Select LLM Model
         llm = ChatOpenAI(temperature = 0.0)
         # Load url_list
-        loader = UnstructuredURLLoader(urls=[url])
+        loader = UnstructuredURLLoader(urls=['"'+url+'"'])
         # Create Vector Database
         index = VectorstoreIndexCreator(vectorstore_cls=DocArrayInMemorySearch).from_loaders([loader])
         # Generate response based on the input query
