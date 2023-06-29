@@ -13,8 +13,8 @@ from langchain.indexes import VectorstoreIndexCreator
 from langchain.document_loaders import WebBaseLoader
 
 
-
-#url_list = ["https://onefootball.com/en/home", "https://onefootball.com/en/team/barcelona-5"]
+url_list = ["https://onefootball.com/en/home",
+       "https://onefootball.com/en/team/barcelona-5",]
 
 
 def generate_response(openai_api_key, query_text):
@@ -24,12 +24,13 @@ def generate_response(openai_api_key, query_text):
         # Select LLM Model
         llm = ChatOpenAI(temperature = 0.0)
         # Load url_list
+        # loader = UnstructuredURLLoader(urls=url_list)
 	loader = WebBaseLoader(["https://onefootball.com/en/home", "https://onefootball.com/en/team/barcelona-5"])
-        #loader = UnstructuredURLLoader(urls=["https://onefootball.com/en/home", "https://onefootball.com/en/team/barcelona-5"])
         # Create Vector Database
         index = VectorstoreIndexCreator(vectorstore_cls=DocArrayInMemorySearch).from_loaders([loader])
         # Generate response based on the input query
-        return index.query(query_text, llm=llm)
+        response = index.query(query_text, llm=llm)
+        return response
 
 
 
@@ -38,7 +39,6 @@ def generate_response(openai_api_key, query_text):
 # Page title
 st.set_page_config(page_title='🏈🔗 Talk to OneFootball')
 st.title('🏈🔗 Talk to OneFootball')
-
 
 # Query text
 query_text = st.text_input('Enter your query:', placeholder = 'Please provide a short summary.')
