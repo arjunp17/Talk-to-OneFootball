@@ -11,6 +11,7 @@ https://github.com/arjunp17/Talk-to-OneFootball/assets/31438104/6adbe4d7-a8fc-43
 - [LangChain Streamlit tutorial](https://blog.streamlit.io/langchain-tutorial-4-build-an-ask-the-doc-app/)
 - [LangChain documentation](https://python.langchain.com/docs/get_started/introduction.html)
 - [LangChain for LLM Application Development](https://www.deeplearning.ai/short-courses/langchain-for-llm-application-development/)
+- [OneFootball](https://onefootball.com/en/home)
 
 
 
