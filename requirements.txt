@@ -5,4 +5,5 @@ tiktoken
 docarray
 chromadb
 unstructured
+bs4
 
