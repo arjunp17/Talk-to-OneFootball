@@ -12,7 +12,7 @@ from langchain.vectorstores import DocArrayInMemorySearch
 from langchain.indexes import VectorstoreIndexCreator
 from langchain.document_loaders import WebBaseLoader
 
-
+# OneFootball webpage URLs
 url_list = ["https://onefootball.com/en/home",
        "https://onefootball.com/en/team/barcelona-5",]
 
